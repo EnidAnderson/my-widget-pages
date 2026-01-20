@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Food Calculator | Nature's Diet®</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="nd-calc-container">
+        <div class="nd-calc-wrapper">
+            <header class="nd-calc-header">
+                <h1 class="nd-calc-title">Dog Food Calculator</h1>
+                <p class="nd-calc-subtitle">Find the perfect Simply Raw® portion size for your dog</p>
+            </header>
+
+            <form id="calculatorForm" class="nd-calc-form" novalidate>
+                <div class="nd-calc-field-group">
+                    <label for="dogWeight" class="nd-calc-label">Dog's Weight</label>
+                    <div class="nd-calc-weight-input-group">
+                        <input 
+                            type="number" 
+                            id="dogWeight" 
+                            name="weight" 
+                            class="nd-calc-input" 
+                            placeholder="Enter weight"
+                            min="1"
+                            max="300"
+                            step="0.1"
+                            required
+                            aria-required="true"
+                        >
+                        <div class="nd-calc-unit-toggle">
+                            <button 
+                                type="button" 
+                                class="nd-calc-unit-btn active" 
+                                data-unit="lbs"
+                                aria-label="Switch to pounds"
+                            >
+                                lbs
+                            </button>
+                            <button 
+                                type="button" 
+                                class="nd-calc-unit-btn" 
+                                data-unit="kg"
+                                aria-label="Switch to kilograms"
+                            >
+                                kg
+                            </button>
+                        </div>
+                    </div>
+                    <span class="nd-calc-error" id="weightError" role="alert"></span>
+                </div>
+
+                <div class="nd-calc-field-group">
+                    <label for="activityLevel" class="nd-calc-label">Activity Level</label>
+                    <select id="activityLevel" name="activity" class="nd-calc-select">
+                        <option value="sedentary">Sedentary (little exercise)</option>
+                        <option value="moderate" selected>Moderate (regular walks)</option>
+                        <option value="active">Active (daily exercise)</option>
+                        <option value="very-active">Very Active (working/high energy)</option>
+                    </select>
+                </div>
+
+                <div class="nd-calc-field-group">
+                    <label for="lifeStage" class="nd-calc-label">Life Stage</label>
+                    <select id="lifeStage" name="lifeStage" class="nd-calc-select">
+                        <option value="puppy">Puppy (under 1 year)</option>
+                        <option value="adult" selected>Adult (1-7 years)</option>
+                        <option value="senior">Senior (7+ years)</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="nd-calc-button" id="calculateBtn">
+                    Calculate
+                </button>
+            </form>
+
+            <div id="results" class="nd-calc-results" style="display: none;">
+                <div class="nd-calc-results-header">
+                    <h2 class="nd-calc-results-title">Recommended Daily Amount</h2>
+                </div>
+                <div class="nd-calc-results-content">
+                    <div class="nd-calc-result-item">
+                        <span class="nd-calc-result-label">Recommended calories per day:</span>
+                        <span class="nd-calc-result-value" id="resultCalories">-</span>
+                    </div>
+                    <div class="nd-calc-result-item">
+                        <span class="nd-calc-result-label">Simply Raw® cups per day:</span>
+                        <span class="nd-calc-result-value" id="resultCups">-</span>
+                    </div>
+                    <div class="nd-calc-result-item">
+                        <span class="nd-calc-result-label">Simply Raw® grams per day:</span>
+                        <span class="nd-calc-result-value" id="resultGrams">-</span>
+                    </div>
+                    <div class="nd-calc-result-item">
+                        <span class="nd-calc-result-label">Feeding schedule:</span>
+                        <span class="nd-calc-result-value" id="resultSchedule">-</span>
+                    </div>
+                </div>
+                <div class="nd-calc-disclaimer">
+                    <p><strong>Note:</strong> This is an estimate. Individual needs may vary based on metabolism, health conditions, and other factors. Please consult with your veterinarian for personalized feeding recommendations.</p>
+                </div>
+                <button type="button" class="nd-calc-button nd-calc-button-secondary" id="resetBtn">
+                    Calculate Again
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/calculator.js"></script>
+</body>
+</html>
