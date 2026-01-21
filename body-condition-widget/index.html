@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body Condition Score Assessment | Nature's Diet®</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="nd-bcs-container">
+        <div class="nd-bcs-wrapper">
+            <header class="nd-bcs-header">
+                <h1 class="nd-bcs-title">Body Condition Score</h1>
+                <p class="nd-bcs-subtitle">Assess your pet's body condition to determine if they're at a healthy weight</p>
+            </header>
+
+            <!-- Pet Type Selection -->
+            <div class="nd-bcs-pet-selector">
+                <button class="nd-bcs-pet-btn active" data-pet="dog" id="petDog">
+                    <span class="nd-bcs-pet-icon">🐕</span>
+                    <span>Dog</span>
+                </button>
+                <button class="nd-bcs-pet-btn" data-pet="cat" id="petCat">
+                    <span class="nd-bcs-pet-icon">🐈</span>
+                    <span>Cat</span>
+                </button>
+            </div>
+
+            <!-- BCS Scale Overview -->
+            <div class="nd-bcs-scale-overview" id="scaleOverview">
+                <h2 class="nd-bcs-section-title">Body Condition Scale (1-9)</h2>
+                
+                <!-- BCS Chart Images -->
+                <div class="nd-bcs-chart-container">
+                    <div class="nd-bcs-chart-wrapper" id="bcsChartWrapper">
+                        <img src="assets/images/dog-bcs-chart.webp" alt="Dog Body Condition Score Chart" class="nd-bcs-chart-image" id="bcsChartImage">
+                        <img src="assets/images/cat-bcs-chart.webp" alt="Cat Body Condition Score Chart" class="nd-bcs-chart-image" id="bcsChartImageCat" style="display: none;">
+                    </div>
+                </div>
+                
+                <div class="nd-bcs-scale-visual">
+                    <div class="nd-bcs-scale-bar">
+                        <div class="nd-bcs-scale-segment" data-score="1-2" style="background: #ffebee;">
+                            <span class="nd-bcs-scale-label">1-2<br>Very Thin</span>
+                        </div>
+                        <div class="nd-bcs-scale-segment" data-score="3-4" style="background: #fff3e0;">
+                            <span class="nd-bcs-scale-label">3-4<br>Thin</span>
+                        </div>
+                        <div class="nd-bcs-scale-segment" data-score="5" style="background: #e8f5e9;">
+                            <span class="nd-bcs-scale-label">5<br>Ideal</span>
+                        </div>
+                        <div class="nd-bcs-scale-segment" data-score="6-7" style="background: #fff3e0;">
+                            <span class="nd-bcs-scale-label">6-7<br>Overweight</span>
+                        </div>
+                        <div class="nd-bcs-scale-segment" data-score="8-9" style="background: #ffebee;">
+                            <span class="nd-bcs-scale-label">8-9<br>Obese</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="nd-bcs-scale-note">Score 5 is ideal. Use the assessment below to determine your pet's score.</p>
+            </div>
+
+            <!-- Assessment Form -->
+            <form id="assessmentForm" class="nd-bcs-form" novalidate>
+                <h2 class="nd-bcs-section-title">Assessment Questions</h2>
+                <p class="nd-bcs-form-intro">Answer these questions about your pet to determine their body condition score.</p>
+
+                <div class="nd-bcs-question-group">
+                    <label class="nd-bcs-question-label">Can you easily feel your pet's ribs?</label>
+                    <div class="nd-bcs-radio-group">
+                        <label class="nd-bcs-radio-label">
+                            <input type="radio" name="ribs" value="very-easy" required>
+                            <span>Very easy to feel, may be visible</span>
+                        </label>
+                        <label class="nd-bcs-radio-label">
+                            <input type="radio" name="ribs" value="easy" required>
+                            <span>Easy to feel, may be slightly visible</span>
+                        </label>
+                        <label class="nd-bcs-radio-label">
+                            <input type="radio" name="ribs" value="moderate" required>
+                            <span>Can feel with light pressure</span>
+                        </label>
+                        <label class="nd-bcs-radio-label">
+                            <input type="radio" name="ribs" value="difficult" required>
+                            <span>Difficult to feel, covered by fat</span>
+                        </label>
+                        <label class="nd-bcs-radio-label">
+                            <input type="radio" name="ribs" value="cannot" required>
+                            <span>Cannot feel, thick fat layer</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="nd-bcs-question-group">
+                    <label class="nd-bcs-question-label">Can you see or feel your pet's spine and hip bones?</label>
+                    <div class="nd-bcs-radio-group">
+                        <label class="nd-bcs-radio-label">
+                            <input type="radio" name="spine" value="very-visible" required>
+                            <span>Very visible and easy to feel</span>
+                        </label>
+                        <label class="nd-bcs-radio-label">
+                            <input type="radio" name="spine" value="visible" required>
+                            <span>Visible and easy to feel</span>
+                        </label>
+                        <label class="nd-bcs-radio-label">
+                            <input type="radio" name="spine" value="palpable" required>
+                            <span>Can feel but not visible</span>
+                        </label>
+                        <label class="nd-bcs-radio-label">
+                            <input type="radio" name="spine" value="difficult" required>
+                            <span>Difficult to feel</span>
+                        </label>
+                        <label class="nd-bcs-radio-label">
+                            <input type="radio" name="spine" value="cannot" required>
+                            <span>Cannot feel, covered by fat</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="nd-bcs-question-group">
+                    <label class="nd-bcs-question-label">When viewed from above, does your pet have a visible waist?</label>
+                    <div class="nd-bcs-radio-group">
+                        <label class="nd-bcs-radio-label">
+                            <input type="radio" name="waist" value="extreme" required>
+                            <span>Extreme hourglass shape</span>
+                        </label>
+                        <label class="nd-bcs-radio-label">
+                            <input type="radio" name="waist" value="clear" required>
+                            <span>Clear waist visible</span>
+                        </label>
+                        <label class="nd-bcs-radio-label">
+                            <input type="radio" name="waist" value="slight" required>
+                            <span>Slight waist visible</span>
+                        </label>
+                        <label class="nd-bcs-radio-label">
+                            <input type="radio" name="waist" value="minimal" required>
+                            <span>Minimal or no waist</span>
+                        </label>
+                        <label class="nd-bcs-radio-label">
+                            <input type="radio" name="waist" value="none" required>
+                            <span>No waist, body is wide</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="nd-bcs-question-group">
+                    <label class="nd-bcs-question-label">When viewed from the side, does your pet have an abdominal tuck?</label>
+                    <div class="nd-bcs-radio-group">
+                        <label class="nd-bcs-radio-label">
+                            <input type="radio" name="tuck" value="extreme" required>
+                            <span>Extreme tuck, very tucked up</span>
+                        </label>
+                        <label class="nd-bcs-radio-label">
+                            <input type="radio" name="tuck" value="clear" required>
+                            <span>Clear tuck visible</span>
+                        </label>
+                        <label class="nd-bcs-radio-label">
+                            <input type="radio" name="tuck" value="slight" required>
+                            <span>Slight tuck visible</span>
+                        </label>
+                        <label class="nd-bcs-radio-label">
+                            <input type="radio" name="tuck" value="minimal" required>
+                            <span>Minimal or no tuck</span>
+                        </label>
+                        <label class="nd-bcs-radio-label">
+                            <input type="radio" name="tuck" value="none" required>
+                            <span>No tuck, abdomen sags</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="nd-bcs-question-group">
+                    <label class="nd-bcs-question-label">Are there visible fat deposits on your pet's body?</label>
+                    <div class="nd-bcs-radio-group">
+                        <label class="nd-bcs-radio-label">
+                            <input type="radio" name="fat" value="none" required>
+                            <span>No fat deposits visible</span>
+                        </label>
+                        <label class="nd-bcs-radio-label">
+                            <input type="radio" name="fat" value="minimal" required>
+                            <span>Minimal fat, mostly on ribs</span>
+                        </label>
+                        <label class="nd-bcs-radio-label">
+                            <input type="radio" name="fat" value="moderate" required>
+                            <span>Moderate fat covering</span>
+                        </label>
+                        <label class="nd-bcs-radio-label">
+                            <input type="radio" name="fat" value="excess" required>
+                            <span>Excess fat on body</span>
+                        </label>
+                        <label class="nd-bcs-radio-label">
+                            <input type="radio" name="fat" value="thick" required>
+                            <span>Thick fat layer, prominent deposits</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="nd-bcs-button" id="calculateBtn">
+                    Calculate Body Condition Score
+                </button>
+            </form>
+
+            <!-- Results Display -->
+            <div id="results" class="nd-bcs-results" style="display: none;">
+                <div class="nd-bcs-results-header">
+                    <h2 class="nd-bcs-results-title">Your Pet's Body Condition Score</h2>
+                </div>
+                <div class="nd-bcs-results-content">
+                    <div class="nd-bcs-score-display">
+                        <div class="nd-bcs-score-number" id="scoreNumber">-</div>
+                        <div class="nd-bcs-score-label" id="scoreLabel">-</div>
+                    </div>
+                    <div class="nd-bcs-score-visual">
+                        <div class="nd-bcs-scale-bar-small">
+                            <div class="nd-bcs-scale-segment-small" data-range="1-2"></div>
+                            <div class="nd-bcs-scale-segment-small" data-range="3-4"></div>
+                            <div class="nd-bcs-scale-segment-small" data-range="5"></div>
+                            <div class="nd-bcs-scale-segment-small" data-range="6-7"></div>
+                            <div class="nd-bcs-scale-segment-small" data-range="8-9"></div>
+                        </div>
+                        <div class="nd-bcs-score-indicator" id="scoreIndicator"></div>
+                    </div>
+                    
+                    <!-- Show relevant BCS chart section in results -->
+                    <div class="nd-bcs-results-chart">
+                        <img src="" alt="Body Condition Score Reference" class="nd-bcs-results-chart-image" id="resultsChartImage" style="display: none;">
+                        <p class="nd-bcs-results-chart-note">Compare your pet to the chart above to visualize their body condition.</p>
+                    </div>
+                    <div class="nd-bcs-recommendation" id="recommendation">
+                        <!-- Recommendations will be inserted here -->
+                    </div>
+                </div>
+                <button type="button" class="nd-bcs-button nd-bcs-button-secondary" id="resetBtn">
+                    Assess Again
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/assessment.js"></script>
+</body>
+</html>

@@ -32,11 +32,12 @@ jobs:
         run: |
           set -euo pipefail
           rm -rf site
-          mkdir -p site/css site/js
+          mkdir -p site/css site/js site/body-condition-widget
           cp index.html site/index.html
           cp embed.html site/embed.html
           cp -R css/* site/css/
           cp -R js/* site/js/
+          cp -R body-condition-widget/* site/body-condition-widget/
           touch site/.nojekyll
 
       - name: Upload artifact

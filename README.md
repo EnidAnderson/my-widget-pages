@@ -8,6 +8,7 @@ After deployment, your URLs will be:
 
 - https://EnidAnderson.github.io/my-widget-pages/
 - https://EnidAnderson.github.io/my-widget-pages/embed.html
+- https://EnidAnderson.github.io/my-widget-pages/body-condition-widget/
 
 ## Wix Embed
 
