@@ -10,6 +10,10 @@
         caloriesPerGram: 3.75, // Example: adjust based on actual product
         // Grams per cup of Nature's Diet® food (update with actual value)
         gramsPerCup: 85, // Example: adjust based on actual product
+        // Calories per 3 lb Simply Raw® bag (approx. 16 cups x 320 kcal)
+        caloriesPerBag: 5120,
+        // Approximate days per month for bag estimate
+        daysPerMonth: 30,
         // Activity multipliers
         activityMultipliers: {
             sedentary: 1.2,
@@ -36,6 +40,7 @@
     const resultCalories = document.getElementById('resultCalories');
     const resultCups = document.getElementById('resultCups');
     const resultGrams = document.getElementById('resultGrams');
+    const resultBags = document.getElementById('resultBags');
     const resultSchedule = document.getElementById('resultSchedule');
     const calculateBtn = document.getElementById('calculateBtn');
     const resetBtn = document.getElementById('resetBtn');
@@ -101,6 +106,10 @@
         const grams = calories / CONFIG.caloriesPerGram;
         const cups = grams / CONFIG.gramsPerCup;
         return { grams, cups };
+    }
+
+    function calculateBagsPerMonth(caloriesPerDay) {
+        return (caloriesPerDay * CONFIG.daysPerMonth) / CONFIG.caloriesPerBag;
     }
 
     // Determine feeding schedule
@@ -201,12 +210,14 @@
         // Calculate
         const dailyCalories = calculateDailyCalories(weightKg, activityLevel, lifeStage);
         const foodAmount = calculateFoodAmount(dailyCalories);
+        const bagsPerMonth = calculateBagsPerMonth(dailyCalories);
         const schedule = getFeedingSchedule(foodAmount.cups);
 
         // Display results
         resultCalories.textContent = `${Math.round(dailyCalories)} calories`;
         resultCups.textContent = `${formatNumber(foodAmount.cups)} cups`;
         resultGrams.textContent = `${formatNumber(foodAmount.grams)} grams`;
+        resultBags.textContent = `${formatNumber(bagsPerMonth, 2)} bags`;
         resultSchedule.textContent = schedule;
 
         // Show results
