@@ -216,7 +216,7 @@
         // Display results
         resultCalories.textContent = `${Math.round(dailyCalories)} calories`;
         resultCups.textContent = `${formatNumber(foodAmount.cups)} cups`;
-        resultGrams.textContent = `${formatNumber(foodAmount.grams)} grams`;
+        // resultGrams.textContent = `${formatNumber(foodAmount.grams)} grams`;
         resultBags.textContent = `${formatNumber(bagsPerMonth, 2)} bags`;
         resultSchedule.textContent = schedule;
 
